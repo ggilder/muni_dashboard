@@ -4,12 +4,18 @@ require 'open-uri'
 require 'nokogiri'
 require 'digest/md5'
 require 'time'
+require 'json'
+require 'haml'
 
 get '/' do
+	haml :index
+end
+
+get '/muni.json' do
 	@@faves ||= YAML.load_file('settings.yml')
 	m = Muni.new
 	arrivals = m.arrivals(@@faves)
-	arrivals.inspect
+	arrivals.to_json
 end
 
 class Muni
@@ -30,6 +36,8 @@ class Muni
 			cache_update(faves_key, arrivals)
 		end
 		
+		# really, the data passed back should include info on when it was last updated.
+		# perhaps we need a more structured json object with status, valid_as_of, etc
 		arrivals
 	end
 	

@@ -1,2 +1,4 @@
 sinatra
 nokogiri
+json
+haml
