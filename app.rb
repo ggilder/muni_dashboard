@@ -1,5 +1,6 @@
 require 'sinatra'
 
 get '/' do
-	"Hello there, world, ain't you lookin' fine today."
+	@@var ||= rand 1000
+	"Hello there, world #{@@var}, ain't you lookin' fine today."
 end
