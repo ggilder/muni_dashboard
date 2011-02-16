@@ -3,7 +3,7 @@ class Muni
 	PREDICTIONS_URL = BASE_URL + 'command=predictions&a=sf-muni'
 	ROUTES_URL = BASE_URL + 'command=routeList&a=sf-muni'
 	ROUTE_INFO_URL = BASE_URL + 'command=routeConfig&a=sf-muni&r='
-	CACHE_EXPIRY = 60
+	CACHE_EXPIRY = 45
 	@@cache = {}
 	
 	def routes
@@ -48,9 +48,7 @@ class Muni
 	def arrivals(faves)
 		faves_key = Digest::MD5.hexdigest(faves.inspect)
 		
-		if (cache_fresh?(faves_key))
-			arrivals = cache_data(faves_key)
-		else
+		if (!cache_fresh?(faves_key))
 			arrivals = []
 			faves.each do |fave|
 				arrivals << stop_arrivals(fave['route'], fave['stop'])
@@ -58,9 +56,11 @@ class Muni
 			cache_update(faves_key, arrivals)
 		end
 		
-		# really, the data passed back should include info on when it was last updated.
-		# perhaps we need a more structured json object with status, valid_as_of, etc
-		arrivals
+		# return hash with data and last updated info
+		{
+			:data => cache_data(faves_key),
+			:as_of => cache_updated(faves_key)
+		}
 	end
 	
 	def cache_fresh?(key)
@@ -71,6 +71,10 @@ class Muni
 	
 	def cache_data(key)
 		(@@cache[key]) ? @@cache[key][:data] : nil
+	end
+	
+	def cache_updated(key)
+		(@@cache[key]) ? @@cache[key][:updated] : nil
 	end
 	
 	def cache_update(key, data)

@@ -12,7 +12,7 @@ function muni_module(){
 		$.template(this.template_name, this.item_tmpl)
 		
 		window.setInterval(function(){ $this.updateStatus() }, 5 * 1000)
-		window.setInterval(function(){ $this.updateContent() }, 30 * 1000)
+		window.setInterval(function(){ $this.updateContent() }, 15 * 1000)
 		
 		this.updateContent()
 	}
@@ -42,11 +42,11 @@ function muni_module(){
 	}
 	this.updateContent = function() {
 		var $this = this
-		$.getJSON('/muni.json', function(data){
-			if (data.length > 0){
-				var out = $.tmpl($this.template_name, data)
+		$.getJSON('/muni.json', function(result){
+			if (result['data'].length > 0){
+				var out = $.tmpl($this.template_name, result['data'])
 				$this.contents.html(out)
-				$this.last_updated_date = new Date()
+				$this.last_updated_date = new Date(result['as_of'] * 1000)
 				$this.updateStatus()
 			} else {
 				$this.contents.html('<li class="error">Error: no muni data received!</li>')
