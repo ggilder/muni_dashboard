@@ -12,7 +12,7 @@ function muni_module(){
 		$.template(this.template_name, this.item_tmpl)
 		
 		window.setInterval(function(){ $this.updateStatus() }, 5 * 1000)
-		window.setInterval(function(){ $this.updateContent() }, 15 * 1000)
+		window.setInterval(function(){ $this.updateContent() }, 16 * 1000)
 		
 		this.updateContent()
 	}
