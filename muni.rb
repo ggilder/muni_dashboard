@@ -108,7 +108,7 @@ class Muni
 			end
 			
 			results[:predictions] = if (predictions.length > 0)
-				predictions.uniq.sort_by {|x| x.to_i}.slice(0, 5).map {|x| (x == 0) ? 'now' : x}.join(', ') + ' min'
+				predictions.uniq.sort_by {|x| x.to_i}.slice(0, 5).map {|x| (x == '0') ? 'now' : x}.join(', ') + ' min'
 			else
 				"No current predictions"
 			end
