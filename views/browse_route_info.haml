@@ -1,0 +1,8 @@
+%h1= @route_info[:title]
+%ul
+	- @route_info[:directions].each do |direction|
+		%li
+			%h2= direction[:title]
+			%ul
+				- direction[:stops].each do |stop|
+					%li #{stop[:title]} (#{stop[:stop_id]})

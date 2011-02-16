@@ -60,5 +60,5 @@ function muni_module(){
 
 jQuery(function($) {
     muni = new muni_module()
-    muni.init('body')
+    muni.init('#modules')
 })
