@@ -7,7 +7,7 @@ function muni_module(){
 		this.last_updated = $('#muni .last_updated')
 		this.last_updated_date = new Date()
 		
-		this.item_tmpl = '<li><h2 class="route">${route}</h2><div class="item-content"><h3 class="direction">${direction}</h3><h4 class="stop">from ${stop}</h4><div class="predictions">${predictions}</div></div></li>'
+		this.item_tmpl = '<li><h2 class="route">${route}</h2><div class="item-content"><h3 class="direction">${direction}</h3><h4 class="stop">@ ${stop}</h4><div class="predictions">${predictions}</div></div></li>'
 		this.template_name = 'muni_item_template'
 		$.template(this.template_name, this.item_tmpl)
 		
@@ -54,7 +54,7 @@ function muni_module(){
 		})
 	}
 	this.moduleMarkup = function() {
-		return '<div id="muni"><h2>MUNI</h2><ul></ul><div class="last_updated"></div></div>'
+		return '<div id="muni" class="module"><h2 class="module_title">MUNI</h2><ul></ul><div class="last_updated"></div></div>'
 	}
 }
 
