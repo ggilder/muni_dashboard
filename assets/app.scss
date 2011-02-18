@@ -1,4 +1,5 @@
-$main_width: 460px;
+$main_width: 430px;
+$main_pad: 20px;
 $color_bg: #EFF0E6;
 $color_text: #544B40;
 $font_text: MisoRegular,Helvetica,Arial,sans-serif;
@@ -21,11 +22,13 @@ body {
 	background-color:$color_bg;
 	color:$color_text;
 	font-family:$font_text;
-	margin:$size_base * 2;
+	margin:0 auto;
+	padding:0;
 }
 #modules{
 	width:$main_width;
 	margin:0 auto;
+	padding: $main_pad;
 }
 .module{
 	width:$main_width;

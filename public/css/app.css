@@ -4,14 +4,16 @@ body {
   background-color: #eff0e6;
   color: #544b40;
   font-family: MisoRegular, Helvetica, Arial, sans-serif;
-  margin: 36px; }
+  margin: 0 auto;
+  padding: 0; }
 
 #modules {
-  width: 460px;
-  margin: 0 auto; }
+  width: 430px;
+  margin: 0 auto;
+  padding: 20px; }
 
 .module {
-  width: 460px; }
+  width: 430px; }
 
 h2.module_title {
   font-family: MisoBold, Helvetica, Arial, sans-serif;
