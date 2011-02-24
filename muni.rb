@@ -3,7 +3,7 @@ class Muni
 	PREDICTIONS_URL = BASE_URL + 'command=predictions&a=sf-muni'
 	ROUTES_URL = BASE_URL + 'command=routeList&a=sf-muni'
 	ROUTE_INFO_URL = BASE_URL + 'command=routeConfig&a=sf-muni&r='
-	PREDICTIONS_LIMIT = 4
+	PREDICTIONS_LIMIT = 3
 	
 	
 	CACHE_EXPIRY = 45
@@ -111,7 +111,8 @@ class Muni
 			end
 			
 			results[:predictions] = if (predictions.length > 0)
-				predictions.uniq.sort_by {|x| x.to_i}.slice(0, PREDICTIONS_LIMIT).map {|x| (x == '0') ? 'now' : x}.join(', ') + ' min'
+				predictions = predictions.uniq.sort_by {|x| x.to_i}.slice(0, PREDICTIONS_LIMIT).map {|x| (x == '0') ? 'now' : x}.join(', ')
+				(predictions == 'now') ? predictions : predictions + ' min'
 			else
 				"No current predictions"
 			end
