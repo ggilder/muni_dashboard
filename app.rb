@@ -43,3 +43,4 @@ end
 set :cache_namespace, "muni"
 set :cache_enable, true
 set :cache_logging, true
+enable :logging
