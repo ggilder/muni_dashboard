@@ -13,12 +13,16 @@ require File.expand_path(File.join(File.dirname(__FILE__), 'lib/classes/muni'))
 
 DAY = 24 * 60 * 60
 
+enable :logging
+set :cache_namespace, "muni"
+set :cache_enable, true
+set :cache_logging, true
+
 get '/' do
 	haml :index
 end
 
 get '/muni.json' do
-	puts "fun!"
 	cache 'arrivals', :expiry => 45 do
 		@@faves ||= YAML.load_file('settings.yml')
 		arrivals = Muni.new.arrivals(@@faves)
@@ -41,7 +45,3 @@ get '/browse/:tag' do |tag|
 	end
 end
 
-set :cache_namespace, "muni"
-set :cache_enable, true
-set :cache_logging, true
-enable :logging
