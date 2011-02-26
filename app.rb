@@ -6,26 +6,39 @@ require 'digest/md5'
 require 'time'
 require 'json'
 require 'haml'
+require 'memcached'
+require 'sinatra/memcache'
 
-require File.expand_path(File.join(File.dirname(__FILE__), 'muni'))
-@@muni = Muni.new
+require File.expand_path(File.join(File.dirname(__FILE__), 'lib/classes/muni'))
+
+DAY = 24 * 60 * 60
 
 get '/' do
 	haml :index
 end
 
 get '/muni.json' do
-	@@faves ||= YAML.load_file('settings.yml')
-	arrivals = @@muni.arrivals(@@faves)
-	arrivals.to_json
+	cache 'arrivals', :expiry => 45 do
+		@@faves ||= YAML.load_file('settings.yml')
+		arrivals = Muni.new.arrivals(@@faves)
+		arrivals.to_json
+	end
 end
 
 get '/browse' do
-	@routes = @@muni.routes
-	haml :browse_routes
+	# cache 1 day
+	cache 'routes', :expiry => 1 * DAY do
+		@routes = Muni.new.routes
+		haml :browse_routes
+	end
 end
 
 get '/browse/:tag' do |tag|
-	@route_info = @@muni.route_info(tag)
-	haml :browse_route_info
+	cache "route_#{tag}", :expiry => 1 * DAY do
+		@route_info = Muni.new.route_info(tag)
+		haml :browse_route_info
+	end
 end
+
+set :cache_namespace, "muni"
+set :cache_enable, true

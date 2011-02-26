@@ -2,3 +2,5 @@ sinatra
 nokogiri
 json
 haml
+memcached
+sinatra-memcache

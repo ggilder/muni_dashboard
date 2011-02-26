@@ -5,10 +5,6 @@ class Muni
 	ROUTE_INFO_URL = BASE_URL + 'command=routeConfig&a=sf-muni&r='
 	PREDICTIONS_LIMIT = 3
 	
-	
-	CACHE_EXPIRY = 45
-	@@cache = {}
-	
 	def routes
 		doc = api_data(ROUTES_URL)
 		routes = doc.search('route').map do |route|
@@ -49,41 +45,13 @@ class Muni
 	end
 	
 	def arrivals(faves)
-		faves_key = Digest::MD5.hexdigest(faves.inspect)
-		
-		if (!cache_fresh?(faves_key))
-			arrivals = []
-			faves.each do |fave|
-				arrivals << stop_arrivals(fave['route'], fave['stop'])
-			end
-			cache_update(faves_key, arrivals)
+		arrivals = []
+		faves.each do |fave|
+			arrivals << stop_arrivals(fave['route'], fave['stop'])
 		end
 		
 		# return hash with data and last updated info
-		{
-			:data => cache_data(faves_key),
-			:as_of => cache_updated(faves_key)
-		}
-	end
-	
-	def cache_fresh?(key)
-		return false if @@cache[key].nil? || @@cache[key][:data].nil? || @@cache[key][:updated].nil?
-		return true if (Time.now.to_i - @@cache[key][:updated]) <= CACHE_EXPIRY
-		return false
-	end
-	
-	def cache_data(key)
-		(@@cache[key]) ? @@cache[key][:data] : nil
-	end
-	
-	def cache_updated(key)
-		(@@cache[key]) ? @@cache[key][:updated] : nil
-	end
-	
-	def cache_update(key, data)
-		@@cache[key] = {}
-		@@cache[key][:data] = data
-		@@cache[key][:updated] = Time.now.to_i
+		{ :data => arrivals, :as_of => Time.now.to_i }
 	end
 	
 	def stop_arrivals(route, stop)
