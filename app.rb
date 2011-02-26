@@ -18,6 +18,7 @@ get '/' do
 end
 
 get '/muni.json' do
+	puts "fun!"
 	cache 'arrivals', :expiry => 45 do
 		@@faves ||= YAML.load_file('settings.yml')
 		arrivals = Muni.new.arrivals(@@faves)
