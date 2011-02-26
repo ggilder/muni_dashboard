@@ -7,9 +7,10 @@ require 'time'
 require 'json'
 require 'haml'
 require 'memcached'
-require 'sinatra/memcache'
+require 'dalli'
 
 require File.expand_path(File.join(File.dirname(__FILE__), 'lib/classes/muni'))
+require File.expand_path(File.join(File.dirname(__FILE__), 'lib/support/sinatra-dalli'))
 
 DAY = 24 * 60 * 60
 

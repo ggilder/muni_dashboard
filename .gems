@@ -3,4 +3,4 @@ nokogiri
 json
 haml
 memcached
-sinatra-memcache
+dalli
