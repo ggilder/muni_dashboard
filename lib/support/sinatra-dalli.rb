@@ -1,3 +1,6 @@
+# Based on https://github.com/JGailor/sinatra-memcache/blob/master/lib/sinatra/memcache.rb
+# Modified to use dalli instead of memcache-client
+
 require 'dalli'
 require 'zlib'
 
