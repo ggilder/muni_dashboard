@@ -82,7 +82,7 @@ class Muni
 				predictions = predictions.uniq.sort_by {|x| x.to_i}.slice(0, PREDICTIONS_LIMIT).map {|x| (x == '0') ? 'now' : x}.join(', ')
 				(predictions == 'now') ? predictions : predictions + ' min'
 			else
-				"No current predictions"
+				"No predictions"
 			end
 		end
 		results

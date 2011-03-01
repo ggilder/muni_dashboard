@@ -1,7 +1,5 @@
 TODO:
 - add fun web app bits like offline cache of css/js and icon and no browser bar and all that
-- tweak font size/layout, maybe restrict to 3 upcoming instead of 4?
-- put "updated" at the top
 - gradient magic on route circles
 - less data usage - send timestamp of last successful request so server can send "nothing new" response instead of full json data
 - figure out the weird resize on launch (ios) thing

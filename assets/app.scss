@@ -39,41 +39,56 @@ h2.module_title{
 	border-bottom:1px solid $color_text;
 	margin:0 0 ($size_heading / 4) 0;
 }
-#muni li{
-	clear:left;
-	margin: 0 0 $size_base 0;
-}
-#muni h2.route{
-	@include rounded-corners($size_muni_bubble / 2);
-	width:$size_muni_bubble;
-	height:$size_muni_bubble;
-	background-color:$color_text;
-	color:$color_bg;
-	line-height:$size_muni_bubble * 1.15;
-	text-align:center;
-	font-size:$size_muni_bubble * 0.75;
-	overflow:hidden;
-	text-shadow:transparentize($color_bg, 0.4) ($size_muni_bubble / 24) ($size_muni_bubble / 24) ($size_muni_bubble / 10);
-	float:left;
-	margin:($size_muni_bubble/8) ($size_muni_bubble / 8) 0 0;
-}
-#muni .item-content{
-	margin-left: $size_muni_bubble + $size_base;
-}
-#muni .direction, #muni .stop{
-	font-size:120%;
-	line-height:1.4;
-	display:inline;
-}
-#muni .direction:after{
-	content:' ';
-}
-#muni .predictions {
-	font-size:$size_heading / 1.25;
-}
-#muni .last_updated{
-	border-top:1px solid $color_text;
-	padding-top:$size_base / 2;
-	margin-top:$size_base / 2;
-	font-size:$size_base * 1.25;
+#muni {
+	position:relative;
+	
+	ul{
+		border-bottom:1px solid $color_text;
+		padding-bottom:$size_base / 2;
+	}
+	
+	li{
+		clear:left;
+		margin: 0 0 $size_base 0;
+	}
+	
+	h2.route{
+		@include rounded-corners($size_muni_bubble / 2);
+		width:$size_muni_bubble;
+		height:$size_muni_bubble;
+		background-color:$color_text;
+		color:$color_bg;
+		line-height:$size_muni_bubble * 1.15;
+		text-align:center;
+		font-size:$size_muni_bubble * 0.75;
+		overflow:hidden;
+		text-shadow:transparentize($color_bg, 0.4) ($size_muni_bubble / 38) ($size_muni_bubble / 38) ($size_muni_bubble / 10);
+		float:left;
+		margin:($size_muni_bubble/8) ($size_muni_bubble / 8) 0 0;
+	}
+	
+	.item-content{
+		margin-left: $size_muni_bubble + $size_base;
+	}
+	
+	.direction, .stop{
+		font-size:110%;
+		line-height:1.4;
+		display:inline;
+	}
+	
+	.direction:after{
+		content:' ';
+	}
+	
+	.predictions {
+		font-size:$size_heading / 1.25;
+	}
+	
+	.last_updated{
+		position:absolute;
+		top:$size_heading - $size_base - (0.75 * $size_base);
+		right:0px;
+		font-size:$size_base;
+	}
 }
