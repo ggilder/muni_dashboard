@@ -1,5 +1,15 @@
 TODO:
+
+performance/mobile:
 - add fun web app bits like offline cache of css/js and icon and no browser bar and all that
-- gradient magic on route circles
 - less data usage - send timestamp of last successful request so server can send "nothing new" response instead of full json data
+
+
+functionality:
+- add user management - just email address?
+- multiple saved sets of favorites per user
+
+
+cosmetic:
 - figure out the weird resize on launch (ios) thing
+- gradient magic on route circles
