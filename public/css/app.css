@@ -3,49 +3,50 @@
 body {
   background-color: #eff0e6;
   color: #544b40;
+  font-size: 12px;
   font-family: MisoRegular, Helvetica, Arial, sans-serif;
   margin: 0 auto;
   padding: 0; }
 
 #modules {
-  width: 430px;
+  width: 300px;
   margin: 0 auto;
-  padding: 20px; }
+  padding: 10px; }
 
 .module {
-  width: 430px; }
+  width: 300px; }
 
 h2.module_title {
   font-family: MisoBold, Helvetica, Arial, sans-serif;
-  font-size: 72px;
+  font-size: 48px;
   border-bottom: 1px solid #544b40;
-  margin: 0 0 18px 0; }
+  margin: 0 0 12px 0; }
 
 #muni {
   position: relative; }
   #muni ul {
     border-bottom: 1px solid #544b40;
-    padding-bottom: 9px; }
+    padding-bottom: 6px; }
   #muni li {
     clear: left;
-    margin: 0 0 18px 0; }
+    margin: 0 0 12px 0; }
   #muni h2.route {
-    border-radius: 36px;
-    -moz-border-radius: 36px;
-    -webkit-border-radius: 36px;
-    width: 72px;
-    height: 72px;
+    border-radius: 24px;
+    -moz-border-radius: 24px;
+    -webkit-border-radius: 24px;
+    width: 48px;
+    height: 48px;
     background-color: #544b40;
     color: #eff0e6;
-    line-height: 82.8px;
+    line-height: 55.2px;
     text-align: center;
-    font-size: 54px;
+    font-size: 36px;
     overflow: hidden;
-    text-shadow: rgba(239, 240, 230, 0.6) 1.895px 1.895px 7.2px;
+    text-shadow: rgba(239, 240, 230, 0.6) 1.263px 1.263px 4.8px;
     float: left;
-    margin: 9px 9px 0 0; }
+    margin: 6px 6px 0 0; }
   #muni .item-content {
-    margin-left: 90px; }
+    margin-left: 60px; }
   #muni .direction, #muni .stop {
     font-size: 110%;
     line-height: 1.4;
@@ -53,9 +54,9 @@ h2.module_title {
   #muni .direction:after {
     content: ' '; }
   #muni .predictions {
-    font-size: 57.6px; }
+    font-size: 38.4px; }
   #muni .last_updated {
     position: absolute;
-    top: 40.5px;
+    top: 27px;
     right: 0px;
-    font-size: 18px; }
+    font-size: 12px; }

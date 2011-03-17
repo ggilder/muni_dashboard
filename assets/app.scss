@@ -1,11 +1,11 @@
-$main_width: 430px;
-$main_pad: 20px;
+$main_width: 300px;
+$main_pad: 10px;
 $color_bg: #EFF0E6;
 $color_text: #544B40;
 $font_text: MisoRegular,Helvetica,Arial,sans-serif;
 $font_heading: MisoBold,Helvetica,Arial,sans-serif;
 
-$size_base: 18px;
+$size_base: 12px;
 $size_heading: $size_base * 4;
 $size_muni_bubble: $size_base * 4;
 
@@ -21,6 +21,7 @@ $size_muni_bubble: $size_base * 4;
 body {
 	background-color:$color_bg;
 	color:$color_text;
+	font-size:$size_base;
 	font-family:$font_text;
 	margin:0 auto;
 	padding:0;
