@@ -47,3 +47,10 @@ get '/browse/:tag' do |tag|
 	end
 end
 
+get '/cache.manifest' do
+  @rev_date = Time.now
+  @cached_files = Dir.glob(File.join('public', 'css', '*.css')) +
+    Dir.glob(File.join('public', 'js', '*.js')) +
+    Dir.glob(File.join('public', 'fonts', '*.{eot,svg,ttf,woff}'))
+  erb :cache_manifest
+end

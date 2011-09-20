@@ -1,5 +1,5 @@
 !!! 5
-%html
+%html{:manifest => "/cache.manifest"}
 	%head
 		%title MUNI
 		%link{:rel => "apple-touch-icon-precomposed", :href => "/apple-touch-icon-precomposed.png"}
@@ -9,8 +9,8 @@
 		%link{:rel => 'stylesheet', :href => 'css/app.css', :type => 'text/css'}
 		%meta{:name => 'viewport', :content => 'initial-scale=1.0, user-scalable=no'}
 		
-		%script{:type => 'text/javascript', :src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js'}
-		%script{:type => 'text/javascript', :src => 'http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js'}
+		%script{:type => 'text/javascript', :src => 'js/jquery.min.js'}
+		%script{:type => 'text/javascript', :src => 'js/jquery.tmpl.min.js'}
 		%script{:type => 'text/javascript', :src => 'js/date.extensions.js'}
 		%script{:type => 'text/javascript', :src => 'js/app.js'}
 	%body
