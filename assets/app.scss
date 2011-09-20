@@ -1,16 +1,27 @@
-$main_width: 300px;
-$main_pad: 10px;
 $color_bg: #EFF0E6;
 $color_text: #544B40;
 $font_text: MisoRegular,Helvetica,Arial,sans-serif;
 $font_heading: MisoBold,Helvetica,Arial,sans-serif;
 
-$size_base: 12px;
-$size_heading: $size_base * 4;
-$size_muni_bubble: $size_base * 4;
-
 @import 'reset.css';
 @import 'fonts.css';
+
+body { font-size:12px; }
+#modules{
+	width:320px;
+	margin:0 auto;
+	padding: 10px;
+}
+
+@media screen and (min-width:620px){
+	body { font-size:24px; }
+	#modules{
+		width:640px;
+		margin:0 auto;
+		padding: 20px;
+	}
+}
+
 
 @mixin rounded-corners($radius){
 	border-radius: $radius;
@@ -21,55 +32,49 @@ $size_muni_bubble: $size_base * 4;
 body {
 	background-color:$color_bg;
 	color:$color_text;
-	font-size:$size_base;
 	font-family:$font_text;
 	margin:0 auto;
 	padding:0;
 }
-#modules{
-	width:$main_width;
-	margin:0 auto;
-	padding: $main_pad;
-}
 .module{
-	width:$main_width;
+	width:100%;
 }
 h2.module_title{
 	font-family:$font_heading;
-	font-size: $size_heading;
+	font-size: 400%;
 	border-bottom:1px solid $color_text;
-	margin:0 0 ($size_heading / 4) 0;
+	margin:0 0 0.25em 0;
 }
 #muni {
 	position:relative;
 	
 	ul{
 		border-bottom:1px solid $color_text;
-		padding-bottom:$size_base / 2;
+		padding-bottom:0.5em;
 	}
 	
 	li{
 		clear:left;
-		margin: 0 0 $size_base 0;
+		margin: 0 0 1em 0;
 	}
 	
 	h2.route{
-		@include rounded-corners($size_muni_bubble / 2);
-		width:$size_muni_bubble;
-		height:$size_muni_bubble;
+		@include rounded-corners(2em);
+		width:1.33em;
+		height:1.33em;
 		background-color:$color_text;
 		color:$color_bg;
-		line-height:$size_muni_bubble * 1.15;
+		line-height:1.45;
 		text-align:center;
-		font-size:$size_muni_bubble * 0.75;
+		font-size:300%;
 		overflow:hidden;
-		text-shadow:transparentize($color_bg, 0.4) ($size_muni_bubble / 38) ($size_muni_bubble / 38) ($size_muni_bubble / 10);
+		text-shadow:transparentize($color_bg, 0.4) 0.035em 0.035em 0.133em;
 		float:left;
-		margin:($size_muni_bubble/8) ($size_muni_bubble / 8) 0 0;
+		margin:0.166em 0.166em 0 0;
 	}
 	
 	.item-content{
-		margin-left: $size_muni_bubble + $size_base;
+		margin-left: 5em;
 	}
 	
 	.direction, .stop{
@@ -83,13 +88,12 @@ h2.module_title{
 	}
 	
 	.predictions {
-		font-size:$size_heading / 1.25;
+		font-size:320%;
 	}
 	
 	.last_updated{
 		position:absolute;
-		top:$size_heading - $size_base - (0.75 * $size_base);
-		right:0px;
-		font-size:$size_base;
+		top:2.25em;
+		right:0;
 	}
 }
