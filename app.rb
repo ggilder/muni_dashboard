@@ -48,9 +48,12 @@ get '/browse/:tag' do |tag|
 end
 
 get '/cache.manifest' do
-  @rev_date = Time.now
   @cached_files = Dir.glob(File.join('public', 'css', '*.css')) +
     Dir.glob(File.join('public', 'js', '*.js')) +
     Dir.glob(File.join('public', 'fonts', '*.{eot,svg,ttf,woff}'))
+  @rev_date = @cached_files.reduce(Time.new(0)) do |latest, file|
+    mtime = File.mtime(file)
+    (mtime > latest) ? mtime : latest
+  end
   erb :cache_manifest
 end
