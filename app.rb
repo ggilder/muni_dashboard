@@ -51,7 +51,9 @@ get '/cache.manifest' do
   @cached_files = Dir.glob(File.join('public', 'css', '*.css')) +
     Dir.glob(File.join('public', 'js', '*.js')) +
     Dir.glob(File.join('public', 'fonts', '*.{eot,svg,ttf,woff}'))
-  @rev_date = @cached_files.reduce(Time.new(0)) do |latest, file|
+  file = @cached_files.pop
+  mtime = File.mtime(file)
+  @rev_date = @cached_files.inject(mtime) do |latest, file|
     mtime = File.mtime(file)
     (mtime > latest) ? mtime : latest
   end
